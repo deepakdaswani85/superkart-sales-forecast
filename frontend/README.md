@@ -3,12 +3,11 @@ title: SuperKart Sales Forecast
 emoji: 📈
 colorFrom: green
 colorTo: blue
-sdk: streamlit
-sdk_version: 1.45.0
-app_file: app.py
+sdk: docker
+app_port: 7860
 pinned: false
 ---
 
 # SuperKart Sales Forecast Frontend
 
-Streamlit interface for the SuperKart forecasting model.
+Streamlit web application hosted on Hugging Face using the Docker SDK. The app calls the public SuperKart Flask backend to generate sales forecasts.
