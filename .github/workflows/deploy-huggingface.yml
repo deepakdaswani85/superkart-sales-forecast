@@ -1,0 +1,31 @@
+name: Deploy to Hugging Face Spaces
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'scripts/deploy_huggingface.py'
+      - '.github/workflows/deploy-huggingface.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Hugging Face client
+        run: pip install --upgrade huggingface_hub
+
+      - name: Deploy backend and frontend Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/deploy_huggingface.py
