@@ -1,6 +1,7 @@
 import os
 from huggingface_hub import HfApi
 
+# Deployment helper for the public SuperKart Hugging Face Spaces.
 HF_TOKEN = os.environ["HF_TOKEN"]
 api = HfApi(token=HF_TOKEN)
 username = api.whoami()["name"]
